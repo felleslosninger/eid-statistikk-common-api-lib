@@ -38,16 +38,6 @@
             <version>7.10.2</version>
         </dependency>
         <dependency>
-            <groupId>no.difi.statistics</groupId>
-            <artifactId>statistics-model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>no.difi.statistics</groupId>
-            <artifactId>statistics-common-elasticsearch</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
             <version>2.2</version>
