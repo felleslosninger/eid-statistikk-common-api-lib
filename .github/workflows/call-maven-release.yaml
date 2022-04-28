@@ -7,10 +7,9 @@ on:
     inputs:
       java-version:
         description: Main version of java
-        default: '11'
+        default: '8'
         required: false
         type: string
-        '8'
     secrets:
       packages-user:
         description: Github packages user
