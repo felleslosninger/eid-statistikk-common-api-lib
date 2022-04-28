@@ -10,7 +10,7 @@ on:
         default: '11'
         required: false
         type: string
-        8
+        '8'
     secrets:
       maven-user:
         description: Maven user
