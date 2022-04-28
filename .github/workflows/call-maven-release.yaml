@@ -1,8 +1,8 @@
 name: Release to github packages
 
 on:
-  push:
-    branches: [ main ]
+  release:
+    types: [created]
   workflow_call:
     inputs:
       java-version: 8
