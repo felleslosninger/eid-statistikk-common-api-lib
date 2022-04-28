@@ -5,9 +5,9 @@ on:
     branches: [ main ]
   workflow_call:
     inputs:
-      java-version:
+      java-version: 8
         description: Main version of java
-        default: '8'
+        default: '11'
         required: false
         type: string
     secrets:
