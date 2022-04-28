@@ -1,6 +1,8 @@
 name: Maven build java
 
 on:
+  release:
+    types: [created]
   workflow_call:
     inputs:
       java-version:
