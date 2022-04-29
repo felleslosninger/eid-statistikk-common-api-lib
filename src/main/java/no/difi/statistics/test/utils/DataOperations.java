@@ -1,4 +1,4 @@
-package no.difi.statistics.elasticsearch.test.utils;
+package no.difi.statistics.test.utils;
 
 import com.tdunning.math.stats.TDigest;
 import no.difi.statistics.elasticsearch.Timestamp;
@@ -22,7 +22,7 @@ import static java.time.temporal.ChronoUnit.*;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 import static no.difi.statistics.elasticsearch.Timestamp.truncatedTimestamp;
-import static no.difi.statistics.elasticsearch.test.utils.TimeSeriesSumCollector.summarize;
+import static no.difi.statistics.test.utils.TimeSeriesSumCollector.summarize;
 import static org.hamcrest.Matchers.*;
 
 public class DataOperations {
