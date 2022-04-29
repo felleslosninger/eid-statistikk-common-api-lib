@@ -1,4 +1,4 @@
-package no.difi.statistics.test.utils;
+package no.difi.statistics.elasticsearch.utils;
 
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 

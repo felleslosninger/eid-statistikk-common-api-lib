@@ -1,4 +1,4 @@
-package no.difi.statistics.test.utils;
+package no.difi.statistics.elasticsearch.utils;
 
 import no.difi.statistics.elasticsearch.Client;
 import no.difi.statistics.elasticsearch.IdResolver;
@@ -37,7 +37,7 @@ import java.util.Scanner;
 import static no.difi.statistics.elasticsearch.IdResolver.id;
 import static no.difi.statistics.elasticsearch.IndexNameResolver.resolveIndexName;
 import static no.difi.statistics.elasticsearch.Timestamp.normalize;
-import static no.difi.statistics.test.utils.DataOperations.unit;
+import static no.difi.statistics.elasticsearch.utils.DataOperations.unit;
 import static org.elasticsearch.action.support.WriteRequest.RefreshPolicy.IMMEDIATE;
 import static org.elasticsearch.common.unit.TimeValue.timeValueMinutes;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;

@@ -1,6 +1,7 @@
-package no.difi.statistics.test.utils;
+package no.difi.statistics.elasticsearch.utils;
 
 import com.tdunning.math.stats.TDigest;
+import no.difi.statistics.elasticsearch.Timestamp;
 import no.difi.statistics.model.MeasurementDistance;
 import no.difi.statistics.model.RelationalOperator;
 import no.difi.statistics.model.TimeSeries;
@@ -21,7 +22,7 @@ import static java.time.temporal.ChronoUnit.*;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 import static no.difi.statistics.elasticsearch.Timestamp.truncatedTimestamp;
-import static no.difi.statistics.test.utils.TimeSeriesSumCollector.summarize;
+import static no.difi.statistics.elasticsearch.utils.TimeSeriesSumCollector.summarize;
 import static org.hamcrest.Matchers.*;
 
 public class DataOperations {
@@ -71,13 +72,13 @@ public class DataOperations {
                         // Discard points with irrelevant categories
                         .filter(point -> point.hasCategories(categories))
                         // Summarize per timestamp (as there might be several points with different categories per timestamp)
-                        .collect(groupingBy(TimeSeriesPoint::getTimestamp, summarize()))
+                        .collect(groupingBy(TimeSeriesPoint::getTimestamp, TimeSeriesSumCollector.summarize()))
                         .values().stream()
                         // Then summarize per target distance
                         .collect(
                                 groupingBy(
-                                        point -> truncatedTimestamp(point.getTimestamp(), targetDistance),
-                                        summarize(timestamp -> truncatedTimestamp(timestamp, targetDistance), categories)
+                                        point -> Timestamp.truncatedTimestamp(point.getTimestamp(), targetDistance),
+                                        TimeSeriesSumCollector.summarize(timestamp -> truncatedTimestamp(timestamp, targetDistance), categories)
                                 )
                         )
                         .values());
@@ -90,7 +91,7 @@ public class DataOperations {
                 // Discard points with irrelevant categories
                 .filter(point -> point.hasCategories(categories))
                 // Summarize per timestamp (as there might be several points with different categories per timestamp)
-                .collect(groupingBy(TimeSeriesPoint::getTimestamp, summarize()))
+                .collect(groupingBy(TimeSeriesPoint::getTimestamp, TimeSeriesSumCollector.summarize()))
                 .values().stream().sorted() // Reestablish ordering after grouping
                 // Group points by target distance
                 .collect(groupingBy(point -> truncatedTimestamp(point.getTimestamp(), targetDistance)))
