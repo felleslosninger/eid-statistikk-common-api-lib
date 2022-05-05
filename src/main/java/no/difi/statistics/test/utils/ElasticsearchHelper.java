@@ -18,6 +18,7 @@ import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.common.Strings;
 import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.elasticsearch.core.TimeValue;
 import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.sort.SortOrder;
@@ -39,7 +40,6 @@ import static no.difi.statistics.elasticsearch.IndexNameResolver.resolveIndexNam
 import static no.difi.statistics.elasticsearch.Timestamp.normalize;
 import static no.difi.statistics.test.utils.DataOperations.unit;
 import static org.elasticsearch.action.support.WriteRequest.RefreshPolicy.IMMEDIATE;
-import static org.elasticsearch.common.unit.TimeValue.timeValueMinutes;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 import static org.elasticsearch.common.xcontent.XContentType.JSON;
 import static org.elasticsearch.index.query.QueryBuilders.rangeQuery;
@@ -116,7 +116,7 @@ public class ElasticsearchHelper {
     }
 
     public void indexPoints(TimeSeriesDefinition seriesDefinition, List<TimeSeriesPoint> points) {
-        BulkRequest bulkRequest = new BulkRequest().setRefreshPolicy(IMMEDIATE).timeout(timeValueMinutes(1));
+        BulkRequest bulkRequest = new BulkRequest().setRefreshPolicy(IMMEDIATE).timeout(TimeValue.timeValueMinutes(1));
         points.forEach(point -> bulkRequest.add(indexRequest(seriesDefinition, point)));
         try {
             BulkResponse response = client.highLevel().bulk(bulkRequest, RequestOptions.DEFAULT);
