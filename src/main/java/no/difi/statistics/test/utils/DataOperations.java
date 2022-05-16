@@ -1,6 +1,6 @@
 package no.difi.statistics.test.utils;
 
-import com.tdunning.math.stats.TDigest;
+import com.tdunning.math.stats.ArrayDigest;
 import no.difi.statistics.elasticsearch.Timestamp;
 import no.difi.statistics.model.MeasurementDistance;
 import no.difi.statistics.model.RelationalOperator;
@@ -22,7 +22,6 @@ import static java.time.temporal.ChronoUnit.*;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 import static no.difi.statistics.elasticsearch.Timestamp.truncatedTimestamp;
-import static no.difi.statistics.test.utils.TimeSeriesSumCollector.summarize;
 import static org.hamcrest.Matchers.*;
 
 public class DataOperations {
@@ -122,9 +121,9 @@ public class DataOperations {
 
     private static Function<TimeSeries, Double> percentileValue(int percentile, String measurementId) {
         return (series) -> {
-            TDigest tdigest = TDigest.createTreeDigest(100.0);
-            series.getPoints().stream().map(p -> p.getMeasurement(measurementId).get()).forEach(tdigest::add);
-            return tdigest.quantile(new BigDecimal(percentile).divide(new BigDecimal(100), 2, RoundingMode.HALF_UP).doubleValue());
+            ArrayDigest arrayDigest = ArrayDigest.createArrayDigest(100.0);
+            series.getPoints().stream().map(p -> p.getMeasurement(measurementId).get()).forEach(arrayDigest::add);
+            return arrayDigest.quantile(new BigDecimal(percentile).divide(new BigDecimal(100), 2, RoundingMode.HALF_UP).doubleValue());
         };
     }
 

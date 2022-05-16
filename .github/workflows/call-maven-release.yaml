@@ -9,7 +9,7 @@ jobs:
   call-workflow-maven-build:
     uses: felleslosninger/eid-github-workflows/.github/workflows/maven-release-lib.yml@main
     with:
-      java-version: 8
+      java-version: 17
     secrets:
       maven-user: ${{ secrets.MAVEN_USER }}
       maven-password: ${{ secrets.MAVEN_PASSWORD }}
