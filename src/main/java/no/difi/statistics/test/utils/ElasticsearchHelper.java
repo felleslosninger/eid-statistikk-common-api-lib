@@ -17,11 +17,11 @@ import org.elasticsearch.action.support.IndicesOptions;
 import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.common.Strings;
-import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.core.TimeValue;
 import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.sort.SortOrder;
+import org.elasticsearch.xcontent.XContentBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,9 +40,9 @@ import static no.difi.statistics.elasticsearch.IndexNameResolver.resolveIndexNam
 import static no.difi.statistics.elasticsearch.Timestamp.normalize;
 import static no.difi.statistics.test.utils.DataOperations.unit;
 import static org.elasticsearch.action.support.WriteRequest.RefreshPolicy.IMMEDIATE;
-import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
-import static org.elasticsearch.common.xcontent.XContentType.JSON;
 import static org.elasticsearch.index.query.QueryBuilders.rangeQuery;
+import static org.elasticsearch.xcontent.XContentFactory.jsonBuilder;
+import static org.elasticsearch.xcontent.XContentType.JSON;
 
 public class ElasticsearchHelper {
 
