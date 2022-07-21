@@ -9,85 +9,64 @@
     <packaging>jar</packaging>
     <version>DEV-SNAPSHOT</version>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.1</version>
-    </parent>
-
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <elasticsearch.lib.version>7.17.4</elasticsearch.lib.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <jackson.databind.version>2.13.3</jackson.databind.version>
+        <t-digest.version>3.1</t-digest.version>
+        <junit.version>5.8.2</junit.version>
+        <slf4j.version>1.7.36</slf4j.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot</artifactId>
-                <version>2.7.1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.2.2</version>
+            <version>${jackson.databind.version}</version>
         </dependency>
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
+            <version>${elasticsearch.lib.version}</version>
         </dependency>
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>${elasticsearch.lib.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
-            <version>2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>compile</scope>
+            <version>${hamcrest.version}</version>
         </dependency>
         <dependency>
             <groupId>com.tdunning</groupId>
             <artifactId>t-digest</artifactId>
-            <version>3.1</version>
+            <version>${t-digest.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>testcontainers</artifactId>
-            <version>1.15.1</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>elasticsearch</artifactId>
-            <version>1.15.1</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+        </plugins>
     </build>
-
 </project>
