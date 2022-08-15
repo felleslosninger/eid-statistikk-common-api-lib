@@ -1,5 +1,6 @@
 package no.difi.statistics.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -28,6 +29,7 @@ public class TimeSeriesPoint implements Comparable<TimeSeriesPoint> {
         // Use builder
     }
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public ZonedDateTime getTimestamp() {
         return timestamp;
     }
