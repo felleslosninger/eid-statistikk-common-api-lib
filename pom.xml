@@ -17,7 +17,7 @@
         <elasticsearch.lib.version>7.17.4</elasticsearch.lib.version>
         <hamcrest.version>2.2</hamcrest.version>
         <jackson.databind.version>2.13.4.2</jackson.databind.version>
-        <t-digest.version>3.1</t-digest.version>
+        <t-digest.version>3.3</t-digest.version>
         <junit.version>5.9.1</junit.version>
         <slf4j.version>1.7.36</slf4j.version>
         <elasticsearch-api-client.version>8.3.3</elasticsearch-api-client.version>
