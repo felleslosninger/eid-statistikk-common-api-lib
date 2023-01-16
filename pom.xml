@@ -19,7 +19,7 @@
         <jackson.databind.version>2.14.1</jackson.databind.version>
         <t-digest.version>3.1</t-digest.version>
         <junit.version>5.9.2</junit.version>
-        <slf4j.version>2.0.5</slf4j.version>
+        <slf4j.version>2.0.6</slf4j.version>
         <elasticsearch-api-client.version>8.5.2</elasticsearch-api-client.version>
     </properties>
 
